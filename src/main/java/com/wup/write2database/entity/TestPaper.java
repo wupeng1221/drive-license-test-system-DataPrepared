@@ -13,7 +13,7 @@ import lombok.Data;
  */
 @TableName(value ="test_paper")
 @Data
-public class TestQuestion implements Serializable {
+public class TestPaper implements Serializable {
     /**
      * 主键id
      */
@@ -36,9 +36,19 @@ public class TestQuestion implements Serializable {
     private String question;
 
     /**
+     * 选择项 对于判断题为空
+     */
+    private String selectItem;
+
+    /**
      * 答案
      */
     private String answer;
+
+    /**
+     * 题目解析
+     */
+    private String analysis;
 
     /**
      * 题目图片的url
@@ -74,12 +84,14 @@ public class TestQuestion implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        TestQuestion other = (TestQuestion) that;
+        TestPaper other = (TestPaper) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getCode() == null ? other.getCode() == null : this.getCode().equals(other.getCode()))
             && (this.getType() == null ? other.getType() == null : this.getType().equals(other.getType()))
             && (this.getQuestion() == null ? other.getQuestion() == null : this.getQuestion().equals(other.getQuestion()))
+            && (this.getSelectItem() == null ? other.getSelectItem() == null : this.getSelectItem().equals(other.getSelectItem()))
             && (this.getAnswer() == null ? other.getAnswer() == null : this.getAnswer().equals(other.getAnswer()))
+            && (this.getAnalysis() == null ? other.getAnalysis() == null : this.getAnalysis().equals(other.getAnalysis()))
             && (this.getPicUrl() == null ? other.getPicUrl() == null : this.getPicUrl().equals(other.getPicUrl()))
             && (this.getKeyWords() == null ? other.getKeyWords() == null : this.getKeyWords().equals(other.getKeyWords()))
             && (this.getStar() == null ? other.getStar() == null : this.getStar().equals(other.getStar()))
@@ -94,7 +106,9 @@ public class TestQuestion implements Serializable {
         result = prime * result + ((getCode() == null) ? 0 : getCode().hashCode());
         result = prime * result + ((getType() == null) ? 0 : getType().hashCode());
         result = prime * result + ((getQuestion() == null) ? 0 : getQuestion().hashCode());
+        result = prime * result + ((getSelectItem() == null) ? 0 : getSelectItem().hashCode());
         result = prime * result + ((getAnswer() == null) ? 0 : getAnswer().hashCode());
+        result = prime * result + ((getAnalysis() == null) ? 0 : getAnalysis().hashCode());
         result = prime * result + ((getPicUrl() == null) ? 0 : getPicUrl().hashCode());
         result = prime * result + ((getKeyWords() == null) ? 0 : getKeyWords().hashCode());
         result = prime * result + ((getStar() == null) ? 0 : getStar().hashCode());
@@ -112,7 +126,9 @@ public class TestQuestion implements Serializable {
         sb.append(", code=").append(code);
         sb.append(", type=").append(type);
         sb.append(", question=").append(question);
+        sb.append(", selectItem=").append(selectItem);
         sb.append(", answer=").append(answer);
+        sb.append(", analysis=").append(analysis);
         sb.append(", picUrl=").append(picUrl);
         sb.append(", keyWords=").append(keyWords);
         sb.append(", star=").append(star);
